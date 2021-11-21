@@ -1,0 +1,83 @@
+version: '3.5'
+
+services:
+
+    php-fpm:
+        container_name: inertiajs-php-fpm-${APP_ENV:-dev}
+        build:
+            context: .
+            target: ${APP_ENV:-dev}
+            dockerfile: .docker/php-fpm/Dockerfile
+            args:
+                APP_ENV: ${APP_ENV:-dev}
+                TZ: ${TZ:-Europe/Kiev}
+        volumes:
+            - ./:/var/www/html:rw
+            - ~/.composer:/root/.composer/cache
+        networks:
+            - inertiajs
+
+    nginx:
+        container_name: inertiajs-nginx-${APP_ENV:-dev}
+        build:
+            context: .
+            target: ${APP_ENV:-dev}
+            dockerfile: .docker/nginx/Dockerfile
+            args:
+                APP_ENV: ${APP_ENV:-dev}
+        volumes:
+            - ./:/var/www/html:rw
+            - ./var/log/nginx:/var/log/nginx:rw
+        ports:
+            - ${NGINX_PORT:-8080}:80
+        depends_on:
+            - php-fpm
+        networks:
+            - inertiajs
+
+    node:
+        container_name: inertiajs-node-${APP_ENV:-dev}
+        image: node:14-alpine
+        volumes:
+            - ./:/var/www/html:rw
+        networks:
+            - inertiajs
+
+    mariadb:
+        container_name: inertiajs-mariadb-${APP_ENV:-dev}
+        build:
+            context: .
+            target: ${APP_ENV:-dev}
+            dockerfile: .docker/mariadb/Dockerfile
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE:-inertiajs.dev}
+            MYSQL_USER: ${MYSQL_USER:-root}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD:-root}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+        ports:
+            - ${MYSQL_PORT:-9033}:3306
+        volumes:
+            - inertiajs-data:/var/lib/mysql:rw
+        networks:
+            - inertiajs
+
+    pma:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: inertiajs-pma-${APP_ENV:-dev}
+        ports:
+            - ${PMA_PORT:-33080}:80
+        environment:
+            PMA_HOST: ${PMA_HOST:-mariadb}
+        depends_on:
+            - mariadb
+        networks:
+            - inertiajs
+
+networks:
+    inertiajs:
+        driver: bridge
+
+volumes:
+    inertiajs-data:
+        driver: local
+

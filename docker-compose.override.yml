@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+
+  mailer:
+    image: mailhog/mailhog
+    container_name: inertiajs-mailer-${APP_ENV:-dev}
+    ports:
+      - ${MAILHOG_PORT:-8025}:8025
+    networks:
+      - inertiajs
+
+  mariadb:
+    ports:
+      - 9033
