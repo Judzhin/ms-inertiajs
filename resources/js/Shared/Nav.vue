@@ -1,6 +1,6 @@
 <template>
 
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
         <li class="nav-item">
             <NavLink href="/" :active="'/' == $page.url">
                 Home

@@ -19279,6 +19279,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Nav: _Nav__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    /**
+     *
+     * @returns {any}
+     */
+    username: function username() {
+      return this.$page.props.auth.user.username;
+    }
   }
 });
 
@@ -19509,25 +19518,15 @@ var _hoisted_5 = {
   "class": "collapse navbar-collapse",
   id: "navbarSupportedContent"
 };
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-  "class": "d-flex"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  "class": "form-control me-2",
-  type: "search",
-  placeholder: "Search",
-  "aria-label": "Search"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-outline-success",
-  type: "submit"
-}, "Search")], -1
-/* HOISTED */
-);
-
+var _hoisted_6 = {
+  "class": "navbar-text"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Nav = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Nav");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Nav), _hoisted_6])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Nav), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<form class=\"d-flex\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <button class=\"btn btn-outline-success\" type=\"submit\">Search</button>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("</form>")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_6, " Welcome Back, " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.username), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -19548,7 +19547,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "navbar-nav me-auto mb-2 mb-lg-0"
+  "class": "navbar-nav me-auto mb-2 mb-lg-0 d-flex"
 };
 var _hoisted_2 = {
   "class": "nav-item"

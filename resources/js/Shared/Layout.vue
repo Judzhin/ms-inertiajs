@@ -7,13 +7,19 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <Nav/>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <!--<form class="d-flex">-->
+                <!--    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+                <!--    <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <!--</form>-->
             </div>
+
+            <span class="navbar-text">
+                Welcome Back, {{ username }}
+            </span>
+
         </div>
     </nav>
 
@@ -24,5 +30,14 @@ import Nav from './Nav';
 
 export default {
     components: {Nav},
+    computed: {
+        /**
+         *
+         * @returns {any}
+         */
+        username() {
+            return this.$page.props.auth.user.username;
+        }
+    }
 };
 </script>
