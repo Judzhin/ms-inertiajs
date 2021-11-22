@@ -41,7 +41,7 @@ services:
         working_dir: /app
         volumes:
             - ./:/app:rw
-        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm ci && npm run dev"
+        # command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm ci && npm run dev"
         networks:
             - inertiajs
 

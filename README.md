@@ -26,3 +26,9 @@ docker-compose run --rm node npm install vue@next @vue/compiler-sfc laravel-mix@
 ```shell
 docker-compose run --rm node npm ci && docker-compose run --rm node npm run dev
 ```
+
+```shell
+docker-compose run --rm node npx mix watch
+```
+
+docker-compose run --rm node npm install @inertiajs/progress

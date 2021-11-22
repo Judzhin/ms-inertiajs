@@ -1,0 +1,15 @@
+<template>
+    <Link :class="['nav-link', {'active': active}]">
+        <slot/>
+    </Link>
+</template>
+<script>
+import {Link} from '@inertiajs/inertia-vue3';
+
+export default {
+    components: {Link},
+    props: {
+        active: Boolean
+    }
+};
+</script>
