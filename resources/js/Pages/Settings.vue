@@ -1,9 +1,7 @@
 <template>
 
-    <Head>
+    <Head title="Setting">
         <!--<title>My App - Setting</title>-->
-        <title>Setting</title>
-        <meta type="description" content="Information About My Setting Page" head-key="description"/>
     </Head>
 
     <!--    <Layout>-->
