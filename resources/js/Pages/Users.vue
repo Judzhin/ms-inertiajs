@@ -10,12 +10,17 @@
 
     </Layout>
 </template>
-<script>
-import {Link} from '@inertiajs/inertia-vue3';
+<script setup>
 import Layout from '../Shared/Layout';
+// import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
 
-export default {
-    components: {Layout, Link},
-    props: {time: String}
-};
+// export default {
+//     components: {Layout},
+//     props: {time: String}
+// };
+
+defineProps({
+    time: String
+})
+
 </script>
