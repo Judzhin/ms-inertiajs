@@ -29,10 +29,15 @@ Route::get('/', function () {
 Route::get('/users', function () {
     // return view('welcome');
     // return inertia('Welcome');
+    // return User::paginate(10);
+
     return Inertia::render('Users', [
-        'users' => User::all()->map(fn($user) => [
-            'name' => $user->name
-        ]),
+        // 'users' => User::all()->map(fn($user) => [
+        //'users' => User::paginate(10)->map(fn($user) => [
+        //    'id' => $user->id,
+        //    'name' => $user->name
+        //]),
+        'users' => User::paginate(10),
         'time' => now()->toTimeString()
     ]);
 });
