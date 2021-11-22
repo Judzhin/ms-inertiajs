@@ -27,6 +27,8 @@ createInertiaApp({
             .component("Link", Link)
             .mount(el)
     },
+    // title: () => "Foo"
+    title: title => "My App: " + title
 });
 
 InertiaProgress.init({

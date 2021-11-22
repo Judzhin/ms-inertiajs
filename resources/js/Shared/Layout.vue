@@ -1,4 +1,10 @@
 <template>
+
+    <Head>
+        <title>My App</title>
+        <meta type="description" content="Information About My App" head-key="description"/>
+    </Head>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My App</a>
@@ -23,15 +29,16 @@
         </div>
     </nav>
 
-<!--    <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless-->
-<!--            src="https://player.simplecast.com/11eb3b6d-1454-4606-857a-7cafa9752cb5?dark=false"></iframe>-->
+    <!--    <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless-->
+    <!--            src="https://player.simplecast.com/11eb3b6d-1454-4606-857a-7cafa9752cb5?dark=false"></iframe>-->
     <slot/>
 </template>
 <script>
 import Nav from './Nav';
+import {Head} from '@inertiajs/inertia-vue3';
 
 export default {
-    components: {Nav},
+    components: {Nav, Head},
     computed: {
         /**
          *
