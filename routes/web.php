@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,6 +30,9 @@ Route::get('/users', function () {
     // return view('welcome');
     // return inertia('Welcome');
     return Inertia::render('Users', [
+        'users' => User::all()->map(fn($user) => [
+            'name' => $user->name
+        ]),
         'time' => now()->toTimeString()
     ]);
 });

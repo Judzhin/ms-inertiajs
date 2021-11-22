@@ -2,8 +2,16 @@
     <Layout>
         <h1>Users</h1>
 
+        <ul>
+            <li
+                v-for="user in users"
+                :key="user.id"
+                v-text="user.name">
+            </li>
+        </ul>
+
         <div style="padding-top: 1000px;">
-            <p>The current thi is {{ time }}</p>
+            <p>The current this is {{ time }}</p>
         </div>
 
         <Link href="/users" preserve-scroll>Refresh</Link>
@@ -20,7 +28,8 @@ import Layout from '../Shared/Layout';
 // };
 
 defineProps({
-    time: String
+    time: String,
+    users: Array
 })
 
 </script>
