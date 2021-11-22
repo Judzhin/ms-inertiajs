@@ -30,16 +30,21 @@
         </tbody>
     </table>
 
-    <ul class="pagination">
-        <!--<li class="page-item" v-for="link in users.links">-->
-        <!--    <Link :href="link.url" v-html="link.label" :class="'page-link'"/>-->
-        <!--</li>-->
-        <template v-for="link in users.links">
-            <li :class="['page-item', {'active': link.active}]" >
-                <Link :href="link.url" v-html="link.label" :class="'page-link'"/>
-            </li>
-        </template>
-    </ul>
+    <!--<ul class="pagination">-->
+    <!--    &lt;!&ndash;<li class="page-item" v-for="link in users.links">&ndash;&gt;-->
+    <!--    &lt;!&ndash;    <Link :href="link.url" v-html="link.label" :class="'page-link'"/>&ndash;&gt;-->
+    <!--    &lt;!&ndash;</li>&ndash;&gt;-->
+    <!--    <template v-for="link in users.links">-->
+    <!--        <li :class="['page-item', {'active': link.active}, link.url ? '' : 'disabled']" >-->
+    <!--            &lt;!&ndash;<Component is="Link" :href="link.url" v-html="link.label" :class="'page-link'"/>&ndash;&gt;-->
+    <!--            <Component-->
+    <!--                :is="link.active ? 'span' : 'Link'"-->
+    <!--                :href="link.url" v-html="link.label" :class="'page-link'"/>-->
+    <!--        </li>-->
+    <!--    </template>-->
+    <!--</ul>-->
+
+    <Pagination :links="users.links" />
 
     <div style="padding-top: 1000px;">
         <p>The current this is {{ time }}</p>
@@ -52,7 +57,7 @@
 <script setup>
 // import Layout from '../Shared/Layout';
 // import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
-
+import Pagination from '../Shared/Pagination';
 // export default {
 //     components: {Layout},
 //     props: {time: String}
