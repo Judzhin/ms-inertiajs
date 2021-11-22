@@ -5,9 +5,11 @@ import Layout from "./Shared/Layout";
 
 createInertiaApp({
     // resolve: name => require(`./Pages/${name}`),
-    resolve: name => {
+    // resolve: name => {
+    resolve: async name => {
         // let page = import(`./Pages/${name}`);
-        let page = require(`./Pages/${name}`).default;
+        // let page = require(`./Pages/${name}`).default;
+        let page = (await import(`./Pages/${name}`)).default;
 
         // page.layout = Layout;
 
