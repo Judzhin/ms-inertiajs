@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         <tr v-for="user in users.data" :key="user.id">
-            <th scope="row">1</th>
+            <th scope="row">{{ user.id }}</th>
             <td>{{ user.name }}</td>
             <td>
                 <!--<Link :href="'/users' + user.id + '/edit'">Edit</Link>-->
@@ -64,7 +64,7 @@
 <script setup>
 // import Layout from '../Shared/Layout';
 // import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
-import Pagination from '../Shared/Pagination';
+import Pagination from '../../Shared/Pagination';
 import {ref, watch} from 'vue';
 import {Inertia} from '@inertiajs/inertia';
 // export default {

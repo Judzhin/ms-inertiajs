@@ -27,20 +27,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/users', function () {
+Route::get('/users', function (Request $request) {
     // return view('welcome');
     // return inertia('Welcome');
     // return User::paginate(10);
 
-    $request = Request::capture();
-
-    return Inertia::render('Users', [
+    return Inertia::render('Users/Index', [
         // 'users' => User::all()->map(fn($user) => [
         // 'users' => User::paginate(10)->map(fn($user) => [
         //     'id' => $user->id,
         //     'name' => $user->name
         // ]),
         'users' => User::query()
+            // ->when($request->input('search'), function ($query, $search) {
             ->when($request->input('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
             })
@@ -53,6 +52,25 @@ Route::get('/users', function () {
         'time' => now()->toTimeString(),
         'filters' => $request->only(['search'])
     ]);
+});
+
+Route::get('/users/create', function (Request $request) {
+    return Inertia::render('Users/Create', [
+    ]);
+});
+
+Route::post('/users', function (Request $request) {
+
+    $attributes = $request->validate([
+        'name' => 'required',
+        'email' => ['required', 'email'],
+        'password' => 'required',
+    ]);
+
+    $user = new User($attributes);
+    $user->save();
+
+    return redirect('/users');
 });
 
 Route::get('/settings', function () {
