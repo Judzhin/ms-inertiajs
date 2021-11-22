@@ -31,9 +31,14 @@
     </table>
 
     <ul class="pagination">
-        <li class="page-item" v-for="link in users.links">
-            <Link :href="link.url" v-html="link.label" :class="'page-link'"/>
-        </li>
+        <!--<li class="page-item" v-for="link in users.links">-->
+        <!--    <Link :href="link.url" v-html="link.label" :class="'page-link'"/>-->
+        <!--</li>-->
+        <template v-for="link in users.links">
+            <li :class="['page-item', {'active': link.active}]" >
+                <Link :href="link.url" v-html="link.label" :class="'page-link'"/>
+            </li>
+        </template>
     </ul>
 
     <div style="padding-top: 1000px;">
