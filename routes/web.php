@@ -20,8 +20,8 @@ Route::get('/', function () {
     // return inertia('Welcome');
     return Inertia::render('Home', [
         'name' => 'Judzhin Miles',
-        'frameworks'  => [
-            'Laravel' , 'Vue', 'Inertia'
+        'frameworks' => [
+            'Laravel', 'Vue', 'Inertia'
         ]
     ]);
 });
@@ -33,11 +33,14 @@ Route::get('/users', function () {
 
     return Inertia::render('Users', [
         // 'users' => User::all()->map(fn($user) => [
-        //'users' => User::paginate(10)->map(fn($user) => [
-        //    'id' => $user->id,
-        //    'name' => $user->name
-        //]),
-        'users' => User::paginate(10),
+        // 'users' => User::paginate(10)->map(fn($user) => [
+        //     'id' => $user->id,
+        //     'name' => $user->name
+        // ]),
+        'users' => User::paginate(10)->through(fn($user) => [
+            'id' => $user->id,
+            'name' => $user->name
+        ]),
         'time' => now()->toTimeString()
     ]);
 });
