@@ -38,8 +38,10 @@ services:
     node:
         container_name: inertiajs-node-${APP_ENV:-dev}
         image: node:14-alpine
+        working_dir: /app
         volumes:
-            - ./:/var/www/html:rw
+            - ./:/app:rw
+        command: sh -c "until [ -f .ready ] ; do sleep 1 ; done && npm ci && npm run dev"
         networks:
             - inertiajs
 

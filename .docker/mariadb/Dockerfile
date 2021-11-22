@@ -4,7 +4,7 @@ CMD ["mysqld"]
 EXPOSE 3306
 
 # DEV env (local)
-FROM scratch as dev
+FROM scratch as local
 
 FROM scratch as test
 

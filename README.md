@@ -19,6 +19,10 @@ composer require inertiajs/inertia-laravel
 </html>
 ```
 
-```html
-docker-compose run --rm node npm install vue@next @vue/compiler-sfc
+```shell
+docker-compose run --rm node npm install vue@next @vue/compiler-sfc laravel-mix@latest
+```
+
+```shell
+docker-compose run --rm node npm ci && docker-compose run --rm node npm run dev
 ```

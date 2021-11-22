@@ -46,7 +46,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 WORKDIR /var/www/html
 
 # DEV env (local)
-FROM scratch as dev
+FROM scratch as local
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash \
     && mv /root/.symfony/bin/symfony /usr/local/bin/symfony \

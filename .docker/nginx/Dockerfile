@@ -13,7 +13,7 @@ CMD ["nginx", "-g", "daemon off;"]
 WORKDIR /var/www/html
 
 # DEV env (local)
-FROM scratch as dev
+FROM scratch as local
 
 # PROD env (kubernetes)
 FROM scratch as prod
