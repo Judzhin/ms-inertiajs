@@ -23,6 +23,8 @@
         </div>
     </nav>
 
+<!--    <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless-->
+<!--            src="https://player.simplecast.com/11eb3b6d-1454-4606-857a-7cafa9752cb5?dark=false"></iframe>-->
     <slot/>
 </template>
 <script>

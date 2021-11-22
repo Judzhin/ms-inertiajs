@@ -1,16 +1,17 @@
 <template>
-    <Layout>
+<!--    <Layout>-->
         <h1>Hello, {{ name }}</h1>
         <p>In this series, we will use the followwing frameworks:</p>
         <ul>
             <li v-for="framework of frameworks" v-text="framework"></li>
         </ul>
-    </Layout>
+<!--    </Layout>-->
 </template>
 <script>
 import Layout from '../Shared/Layout';
 export default {
-    components: { Layout },
+    // components: { Layout },
+    layout: Layout,
     props: {
         name: String,
         frameworks: Array
