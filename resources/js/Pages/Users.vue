@@ -1,6 +1,13 @@
 <template>
     <!--    <Layout>-->
-    <h1>Users</h1>
+    <div class="d-flex justify-content-between">
+        <div class="bd-highlight">
+            <h1>Users</h1>
+        </div>
+        <div class="bd-highlight">
+            <input v-model="search" type="search" class="form-control mt-3" placeholder="Search..."/>
+        </div>
+    </div>
 
     <!--<ul>-->
     <!--    <li-->
@@ -44,7 +51,7 @@
     <!--    </template>-->
     <!--</ul>-->
 
-    <Pagination :links="users.links" />
+    <Pagination :links="users.links"/>
 
     <div style="padding-top: 1000px;">
         <p>The current this is {{ time }}</p>
@@ -58,15 +65,28 @@
 // import Layout from '../Shared/Layout';
 // import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
 import Pagination from '../Shared/Pagination';
+import {ref, watch} from 'vue';
+import {Inertia} from '@inertiajs/inertia';
 // export default {
 //     components: {Layout},
 //     props: {time: String}
 // };
 
-defineProps({
+let props = defineProps({
     time: String,
     // users: Array
-    users: Object
+    users: Object,
+    filters: Object
 })
+
+let search = ref(props.filters.search);
+
+watch(search, value => {
+    // console.log('Changed' + value);
+    Inertia.get('/users', {search: value}, {
+        preserveState: true,
+        replace: true
+    });
+});
 
 </script>

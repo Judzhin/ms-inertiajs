@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -31,17 +32,26 @@ Route::get('/users', function () {
     // return inertia('Welcome');
     // return User::paginate(10);
 
+    $request = Request::capture();
+
     return Inertia::render('Users', [
         // 'users' => User::all()->map(fn($user) => [
         // 'users' => User::paginate(10)->map(fn($user) => [
         //     'id' => $user->id,
         //     'name' => $user->name
         // ]),
-        'users' => User::paginate(10)->through(fn($user) => [
-            'id' => $user->id,
-            'name' => $user->name
-        ]),
-        'time' => now()->toTimeString()
+        'users' => User::query()
+            ->when($request->input('search'), function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->paginate(10)
+            ->withQueryString()
+            ->through(fn($user) => [
+                'id' => $user->id,
+                'name' => $user->name
+            ]),
+        'time' => now()->toTimeString(),
+        'filters' => $request->only(['search'])
     ]);
 });
 
