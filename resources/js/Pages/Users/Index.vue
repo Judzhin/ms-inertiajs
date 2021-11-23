@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
         <div class="bd-highlight">
             <h1 class="float-start">Users</h1>
-            <Link href="/users/create" class="btn btn-outline-primary mt-2 ms-2">New User</Link>
+            <Link v-if="can.createUser" href="/users/create" class="btn btn-outline-primary mt-2 ms-2">New User</Link>
         </div>
         <div class="bd-highlight">
             <input v-model="search" type="search" class="form-control mt-2" placeholder="Search..."/>
@@ -32,7 +32,7 @@
             <td>{{ user.name }}</td>
             <td>
                 <!--<Link :href="'/users' + user.id + '/edit'">Edit</Link>-->
-                <Link :href="`/users/${user.id}/edit`">Edit</Link>
+                <Link v-if="user.can.edit" :href="`/users/${user.id}/edit`">Edit</Link>
             </td>
         </tr>
         </tbody>
@@ -79,7 +79,8 @@ let props = defineProps({
     time: String,
     // users: Array
     users: Object,
-    filters: Object
+    filters: Object,
+    can: Object
 })
 
 let search = ref(props.filters.search);

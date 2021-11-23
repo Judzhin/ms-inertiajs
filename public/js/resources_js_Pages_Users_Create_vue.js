@@ -34,9 +34,9 @@ __webpack_require__.r(__webpack_exports__);
     // });
 
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-      name: '',
-      email: '',
-      password: ''
+      name: "",
+      email: "",
+      password: ""
     }); // let processing = ref(false);
 
     var submit = function submit() {
@@ -49,7 +49,7 @@ __webpack_require__.r(__webpack_exports__);
       //         processing.value = false
       //     }
       // });
-      form.post('/users');
+      form.post("/users");
     };
 
     var __returned__ = {
@@ -201,7 +201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "submit",
     "class": "btn btn-primary",
     disabled: $setup.form.processing
-  }, "Submit", 8
+  }, " Submit ", 8
   /* PROPS */
   , _hoisted_14)], 32
   /* HYDRATE_EVENTS */

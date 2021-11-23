@@ -32,3 +32,5 @@ docker-compose run --rm node npx mix watch
 ```
 
 docker-compose run --rm node npm install @inertiajs/progress
+
+docker-compose run --rm php-cli php artisan make:policy UserPolicy --model=User
