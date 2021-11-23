@@ -68,6 +68,8 @@ import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
 import Pagination from '../../Shared/Pagination';
 import {ref, watch} from 'vue';
 import {Inertia} from '@inertiajs/inertia';
+import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 // export default {
 //     components: {Layout},
 //     props: {time: String}
@@ -82,12 +84,21 @@ let props = defineProps({
 
 let search = ref(props.filters.search);
 
-watch(search, value => {
+// watch(search, value => {
+//     // console.log('Changed' + value);
+//     Inertia.get('/users', {search: value}, {
+//         preserveState: true,
+//         replace: true
+//     });
+// });
+
+// watch(search, throttle(value => {
+watch(search, debounce(value => {
     // console.log('Changed' + value);
     Inertia.get('/users', {search: value}, {
         preserveState: true,
         replace: true
     });
-});
+}, 500));
 
 </script>
