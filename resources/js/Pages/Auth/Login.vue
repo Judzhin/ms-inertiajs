@@ -1,30 +1,24 @@
 <template>
-
-    <Head>
-        <!--<title>My App - Home</title>-->
-        <title>Home</title>
-        <meta type="description" content="Information About My Home Page" head-key="description"/>
-    </Head>
-
-    <!--    <Layout>-->
-    <h1>Hello, {{ name }}</h1>
-    <p>In this series, we will use the followwing frameworks:</p>
-    <ul>
-        <li v-for="framework of frameworks" v-text="framework"></li>
-    </ul>
-    <!--    </Layout>-->
+    <div class="row justify-content-md-center">
+        <form class="col col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 </template>
-<script>
-import Layout from '../Shared/Layout';
-import {Head} from '@inertiajs/inertia-vue3';
 
+<script>
 export default {
-    // components: { Layout },
-    components: {Head},
-    layout: Layout,
-    props: {
-        name: String,
-        frameworks: Array
-    }
+    // layout: null
 };
 </script>
