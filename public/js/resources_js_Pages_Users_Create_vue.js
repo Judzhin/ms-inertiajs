@@ -13,6 +13,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -21,22 +23,42 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
-    expose();
-    var form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
+    expose(); // let form = reactive({
+    //     name: '',
+    //     email: '',
+    //     password: '',
+    // });
+    // this.$inertia.form({
+    //     name: '',
+    //     ...
+    // });
+
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       name: '',
       email: '',
       password: ''
-    });
+    }); // let processing = ref(false);
 
     var submit = function submit() {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post('/users', form);
+      // processing.value = true;
+      // Inertia.post('/users', form, {
+      //     onStart: () => {
+      //         processing.value = true
+      //     },
+      //     onFinish: () => {
+      //         processing.value = false
+      //     }
+      // });
+      form.post('/users');
     };
 
     var __returned__ = {
       form: form,
       submit: submit,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
-      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia
+      ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -118,14 +140,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_13 = ["textContent"];
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit",
-  "class": "btn btn-primary"
-}, "Submit", -1
-/* HOISTED */
-);
-
+var _hoisted_14 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
@@ -137,7 +152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.form.name = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['form-control', {
-      'is-invalid': _ctx.$page.props.errors.name
+      'is-invalid': $setup.form.errors.name
     }]),
     id: "inputName",
     "aria-describedby": "nameHelp",
@@ -146,7 +161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "invalid-feedback",
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.errors.name)
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.name)
   }, null, 8
   /* PROPS */
   , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -155,7 +170,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     type: "email",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['form-control', {
-      'is-invalid': _ctx.$page.props.errors.email
+      'is-invalid': $setup.form.errors.email
     }]),
     id: "inputEmail",
     "aria-describedby": "emailHelp"
@@ -163,7 +178,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.email]]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "invalid-feedback",
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.email)
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.email)
   }, null, 8
   /* PROPS */
   , _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -172,7 +187,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     type: "password",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['form-control', {
-      'is-invalid': _ctx.$page.props.errors.email
+      'is-invalid': _ctx.$page.props.errors.password
     }]),
     id: "inputPassword"
   }, null, 2
@@ -182,7 +197,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.errors.password)
   }, null, 8
   /* PROPS */
-  , _hoisted_13)]), _hoisted_14], 32
+  , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<button type=\"submit\" class=\"btn btn-primary\" :disabled=\"processing\">Submit</button>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "submit",
+    "class": "btn btn-primary",
+    disabled: $setup.form.processing
+  }, "Submit", 8
+  /* PROPS */
+  , _hoisted_14)], 32
   /* HYDRATE_EVENTS */
   )])], 64
   /* STABLE_FRAGMENT */
