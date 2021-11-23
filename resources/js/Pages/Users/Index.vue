@@ -2,10 +2,11 @@
     <!--    <Layout>-->
     <div class="d-flex justify-content-between">
         <div class="bd-highlight">
-            <h1>Users</h1>
+            <h1 class="float-start">Users</h1>
+            <Link href="/users/create" class="btn btn-outline-primary mt-2 ms-2">New User</Link>
         </div>
         <div class="bd-highlight">
-            <input v-model="search" type="search" class="form-control mt-3" placeholder="Search..."/>
+            <input v-model="search" type="search" class="form-control mt-2" placeholder="Search..."/>
         </div>
     </div>
 
@@ -63,7 +64,7 @@
 </template>
 <script setup>
 // import Layout from '../Shared/Layout';
-// import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
+import {Link} from '@inertiajs/inertia-vue3'; // Global Import in App.js
 import Pagination from '../../Shared/Pagination';
 import {ref, watch} from 'vue';
 import {Inertia} from '@inertiajs/inertia';

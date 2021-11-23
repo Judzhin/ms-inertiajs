@@ -88,6 +88,6 @@ cli: ## Run CLI
 	$(info Make: Run CLI)
 	@docker-compose exec php-fpm bash
 
-node: ## Run CLI
-	$(info Make: Run CLI)
-	@docker-compose exec node bash
+watch: ## Run CLI
+	$(info Make: Run Watch)
+	@docker-compose run --rm node npx mix watch
